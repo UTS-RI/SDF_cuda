@@ -1,5 +1,5 @@
 # SDF_cuda
-SDF computation on CUDA
+SDF computation on CUDA (look at my [other implementation on CPU](https://github.com/rFalque/voxelization_and_sdf) if you want some illustration -- as a side note kdtree are really efficient ... faster than this code but that method is not exact in some circonstances).
 
 ## What is it?
 Example of distance function computation using CUDA. The code is pretty minimalistic and the main files to look at are:
@@ -35,3 +35,4 @@ The output of the demo will be saved in `data/image_stack/` in the form of image
 * [An Even Easier Introduction to CUDA](https://devblogs.nvidia.com/even-easier-introduction-cuda/): I can not recommend this enough, this is a very simple and straighforward introduction to GPU programming with CUDA
 * [CUDA syntax](http://www.icl.utk.edu/~mgates3/docs/cuda.html): CUDA cheat sheet kind of style
 * [Actual CUDA documentation](https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/index.html): More torough documentation
+* [andyzeng/tsdf-fusion](https://github.com/andyzeng/tsdf-fusion): Other related git repo
