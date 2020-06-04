@@ -11,7 +11,7 @@
 
 int main() {
     bool visualization = true;
-    int grid_resolution = 100;
+    int grid_resolution = 100;    // The code goes nuts if the resolution is too high, this is probably a memory issue
     double bounding_box_scale = 1;
 
     // IO: load files
@@ -21,6 +21,7 @@ int main() {
     Eigen::MatrixXd N;
     Eigen::MatrixXi RGB;
     readPLY("../data/Lucy100k.ply", V, F, N, RGB);
+    //readPLY("../data/david.ply", V, F, N, RGB);
     std::cout << "Progress: data loaded\n";
 
     // put it into rowWise
@@ -57,7 +58,6 @@ int main() {
                 sdf_tensor(x, y, z) = sdf_array[x + y*Dx + z*Dx*Dy];
     
     print_to_folder("../data/image_stack/", sdf_tensor);
-
 
     free(sdf_array);
     sdf.clear_memory();

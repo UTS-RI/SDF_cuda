@@ -1,12 +1,11 @@
 # SDF_cuda
-SDF computation on CUDA (look at my [other implementation on CPU](https://github.com/rFalque/voxelization_and_sdf) if you want some illustration -- as a side note kdtree are really efficient ... faster than this code but that method is not exact in some circonstances).
+SDF computation on CUDA (look at my [other implementation on CPU](https://github.com/rFalque/voxelization_and_sdf) if you want some illustration -- as a side note kdtree are really efficient ... faster than this code but that method is not exact for meshes with very large triangles).
 
 ## What is it?
 Example of distance function computation using CUDA. The code is pretty minimalistic and the main files to look at are:
 * app/test_sdf.cpp
 * includes/compute_sdf.h
 * src/compute_sdf.cu
-
 
 The specifiers `__global__`, `__device__`, and `__host__` are defining if the function will be compiled on the host (CPU) or on the device (GPU).
 
@@ -27,9 +26,9 @@ This will compute a regular distance function grid of size [58, 35, 100] from of
 The output of the demo will be saved in `data/image_stack/` in the form of images.
 
 ## TODO
-* Need to make it signed ... if you feel like playing with it let me know, otherwise, I'll do it asap
-* Implementation of an half-edge mesh data structure? (it might be needed for the sign computation)
+* There is a weird bug with the sign of the distance function which is flipped is some rare occasions. In the demo, it happens at the tensor value [25, 0, 19] on Lucy100k.
 * Time each step of the program, I suspect most of the time is spent in transfering the data to the GPU memory
+* Add visualization
 
 ## Further CUDA doc to read
 * [An Even Easier Introduction to CUDA](https://devblogs.nvidia.com/even-easier-introduction-cuda/): I can not recommend this enough, this is a very simple and straighforward introduction to GPU programming with CUDA
