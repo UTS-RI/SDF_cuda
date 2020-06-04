@@ -1,5 +1,5 @@
 # SDF_cuda
-SDF computation on CUDA (look at my [other implementation on CPU](https://github.com/rFalque/voxelization_and_sdf) if you want some illustration -- as a side note kdtree are really efficient ... faster than this code but that method is not exact for meshes with very large triangles).
+SDF computation on CUDA (look at my [other implementation on CPU](https://github.com/rFalque/voxelization_and_sdf) if you want some illustrations -- as a side note kdtree are really efficient ... faster than this code but that method is not exact for meshes with very large triangles).
 
 ## What is it?
 Example of distance function computation using CUDA. The code is pretty minimalistic and the main files to look at are:
@@ -21,7 +21,7 @@ make
 ./test_sdf
 ```
 
-This will compute a regular distance function grid of size [58, 35, 100] from of mesh with 100k faces, 50k vertices. All together 58 * 35 * 100 * 100.000 distance computations are performed (20.3 billion inference), hence the importance of GPU parrallelization.
+This will compute a regular distance function grid of size [58, 35, 100] from of mesh with 100k faces, 50k vertices. All together 58 * 35 * 100 * 100.000 distance computations are performed (20.3 billion inferences), hence the importance of GPU parrallelization.
 
 The output of the demo will be saved in `data/image_stack/` in the form of images.
 
