@@ -189,26 +189,12 @@ void compute_sdf(float *V, int V_size,
 
         // process the normal stack
         float3 normal_of_closest_point = make_float3(0.0, 0.0, 0.0);
-        int inside_out = 1;
+        int inside_out = 1;  // positive numbers are inside, negatice numbers are outside
         for (size_t normal_id = 0; normal_id < normal_counter; normal_id++)
             normal_of_closest_point += normal_register[normal_id];
 
         if (sign( dot(normal_of_closest_point, closest_point_on_mesh-query_point) ) == -1)
             inside_out = -1;
-
-        if (x_id == 25 && y_id == 0 && z_id == 19){
-            printf("error case: %d\n", normal_counter);
-            printf("inside_out: %d\n", inside_out);
-            printf("distance_to_mesh: %f\n", distance_to_mesh);
-            printf("dot value: %f\n", dot(normal_register[0], closest_point_on_mesh-query_point));
-        }
-
-        if (normal_counter >= 3){
-            printf("error case: %d\n", normal_counter);
-            printf("inside_out: %d\n", inside_out);
-            printf("distance_to_mesh: %f\n", distance_to_mesh);
-            printf("dot value: %f\n", dot(normal_register[0], closest_point_on_mesh-query_point));
-        }
 
         sdf[i] = distance_to_mesh * inside_out;
     }
